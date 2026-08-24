@@ -6,10 +6,10 @@ LABEL "com.github.actions.name"="Spellcheck Action"
 LABEL "com.github.actions.description"="Check spelling of files in repository"
 LABEL "com.github.actions.icon"="clipboard"
 LABEL "com.github.actions.color"="green"
-LABEL "repository"="http://github.com/rojopolis/spellcheck-github-actions"
+LABEL "repository"="http://github.com/step-security/spellcheck-github-actions"
 LABEL "homepage"="https://github.com/marketplace/actions/github-spellcheck-action"
-LABEL "maintainer"="rojopolis <rojo@deba.cl>"
-LABEL "maintainer"="jonasbn <jonasbn@gmail.com>"
+LABEL "maintainer"="step-security"
+LABEL "maintainer"="step-security <security@stepsecurity.io>"
 
 COPY entrypoint.sh /entrypoint.sh
 COPY requirements.txt /requirements.txt
@@ -19,7 +19,7 @@ COPY pwc.py /pwc.py
 
 # REF: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#apt-get
 RUN apt-get update && apt-get install -y \
-    build-essential pkg-config jq \
+    build-essential pkg-config curl jq \
     libxml2-dev libxslt1-dev \
     zlib1g-dev \
     aspell hunspell \

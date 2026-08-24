@@ -1,8 +1,8 @@
-[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
-
 <!-- omit from toc -->
 # spellcheck-github-actions
 <!-- omit from toc -->
+
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
 
 ![Markdownlint Action][GHAMKDBADGE]
 ![Spellcheck Action][GHASPLLBADGE]
@@ -18,13 +18,12 @@ This action uses [PySpelling][pyspelling] to check spelling in source files in t
 - [Configuration](#configuration)
   - [Using a Canonical Version](#using-a-canonical-version)
 - [Specifying Sources Files To Check](#specifying-sources-files-to-check)
-  - [Examples](#examples)
-    - [No spaces, quotes not required](#no-spaces-quotes-not-required)
-    - [No spaces, quotes not required, double quotes used for complete parameter](#no-spaces-quotes-not-required-double-quotes-used-for-complete-parameter)
-    - [No spaces, quotes not required, double quotes used for single parameters](#no-spaces-quotes-not-required-double-quotes-used-for-single-parameters)
-    - [Spaces, quotes required, single quotes used](#spaces-quotes-required-single-quotes-used)
-    - [Spaces, quotes required, double quotes used](#spaces-quotes-required-double-quotes-used)
-    - [Spaces, quotes required, intermixed quotes, will not work](#spaces-quotes-required-intermixed-quotes-will-not-work)
+  - [No spaces, quotes not required](#no-spaces-quotes-not-required)
+  - [No spaces, quotes not required, double quotes used for complete parameter](#no-spaces-quotes-not-required-double-quotes-used-for-complete-parameter)
+  - [No spaces, quotes not required, double quotes used for single parameters](#no-spaces-quotes-not-required-double-quotes-used-for-single-parameters)
+  - [Spaces, quotes required, single quotes used](#spaces-quotes-required-single-quotes-used)
+  - [Spaces, quotes required, double quotes used](#spaces-quotes-required-double-quotes-used)
+  - [Spaces, quotes required, intermixed quotes, will not work](#spaces-quotes-required-intermixed-quotes-will-not-work)
 - [Specify a Specific Task To Run](#specify-a-specific-task-to-run)
 - [Specify a PySpelling Output Artifact](#specify-a-pyspelling-output-artifact)
   - [Extra Configuration](#extra-configuration)
@@ -56,8 +55,6 @@ This action uses [PySpelling][pyspelling] to check spelling in source files in t
   - [A note on DockerHub](#a-note-on-dockerhub)
 - [Development](#development)
 - [Resources and References](#resources-and-references)
-- [Author](#author)
-- [Acknowledgements](#acknowledgements)
 - [Copyright and License](#copyright-and-license)
 
 ## Features
@@ -115,7 +112,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -145,7 +142,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -161,17 +158,13 @@ When this option is used, you must also specify the `task_name` to override the 
 
 Do note that file paths containing spaces need to be quoted using either `'` (single quotes) or `"` (double quotes). The quoting has to be uniform and the two quoting styles can not be intermixed.
 
-### Examples
-
-Parts are lifted from issue [#84](https://github.com/step-security/spellcheck-github-actions/issues/84)
-
-#### No spaces, quotes not required
+### No spaces, quotes not required
 
 ```yaml
 source_files: README.md CHANGELOG.md notes/Notes.md
 ```
 
-#### No spaces, quotes not required, double quotes used for complete parameter
+### No spaces, quotes not required, double quotes used for complete parameter
 
 ```yaml
 source_files: "README.md CHANGELOG.md notes/Notes.md"
@@ -179,7 +172,7 @@ source_files: "README.md CHANGELOG.md notes/Notes.md"
 
 This might actually work, but it is not recommended and might it might break, instead using proper quoting.
 
-#### No spaces, quotes not required, double quotes used for single parameters
+### No spaces, quotes not required, double quotes used for single parameters
 
 ```yaml
 source_files: "README.md" "CHANGELOG.md" "notes/Notes.md"
@@ -187,19 +180,19 @@ source_files: "README.md" "CHANGELOG.md" "notes/Notes.md"
 
 This would also work using single quotes
 
-#### Spaces, quotes required, single quotes used
+### Spaces, quotes required, single quotes used
 
 ```yaml
 source_files: 'Managed Services/Security Monitor/README.md' 'Terraform/Development Guide/README.md'
 ```
 
-#### Spaces, quotes required, double quotes used
+### Spaces, quotes required, double quotes used
 
 ```yaml
 source_files: "Managed Services/Security Monitor/README.md" "Terraform/Development Guide/README.md"
 ```
 
-#### Spaces, quotes required, intermixed quotes, will not work
+### Spaces, quotes required, intermixed quotes, will not work
 
 ```yaml
 source_files: README.md CHANGELOG.md notes/Notes.md
@@ -227,7 +220,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -262,7 +255,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -371,7 +364,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -617,7 +610,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -657,7 +650,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -888,7 +881,7 @@ Indicates: `spellcheck.yaml` so this file should exist in the repository.
 
 If the file is available in the repository, please check that your workflow is configured correctly, with the following line, which enables [the action: checkout][actioncheckout].
 
-`uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1`
+`uses: actions/checkout@v7`
 
 In full context:
 
@@ -906,7 +899,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -1048,36 +1041,6 @@ $ docker run -it -v $PWD:/tmp github-action-spellcheck
 - [GNU Aspell][aspell]
 - [Hunspell][hunspell]
 - [PySpelling][pyspelling]
-
-## Author
-
-The original author of this GitHub Action is Robert Jordan (@rojopolis)
-
-## Acknowledgements
-
-Here follows a list of contributors in alphabetical order:
-
-- @aSemy
-- Albert Volkman, @albertvolkman
-- Andreas Kohout, @akohout-hai
-- Byron Miller, @supernovae
-- Isaac Muse, @facelessuser
-- Jonas Brømsø, @jonasbn
-- José Eduardo Montenegro Cavalcanti de Oliveira, @edumco
-- @Lasica
-- Matt Calvert, @miff2000
-- Matthew Macdonald-Wallace, @proffalken
-- Michael Flaxman, @mflaxman
-- Micha Hobert, @Isengo1989
-- Mike Starov, @xsaero00
-- Nicolas Lhomme, @nlhomme
-- Pavel Skipenes, @pavelskipenes
-- Peter Petrik, @PeterPetrik
-- Riccardo Porreca, @riccardoporreca
-- Stefan Oderbolz @metaodi
-- Stephen Bates, @sbates130272
-
-Do you want to be left out, or feel left out of this list or have a different representation of your name, please submit a pull request or raise an issue
 
 ## Copyright and License
 

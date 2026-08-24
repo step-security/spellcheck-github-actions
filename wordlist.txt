@@ -114,7 +114,6 @@ proffalken
 pymdown
 pyspelling
 riccardoporreca
-rojopolis
 sbates
 sexualized
 shoverbj

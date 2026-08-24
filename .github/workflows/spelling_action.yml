@@ -26,15 +26,9 @@ jobs:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@v0
+        uses: ./
         with:
           source_files: README.md CHANGELOG.md
           task_name: Markdown
           output_file: spellcheck-output.txt
 
-      - name: Archive spellcheck output
-        uses: actions/upload-artifact@v7
-        if: '!cancelled()'
-        with:
-          name: Spellcheck artifact
-          path: spellcheck-output.txt
