@@ -115,12 +115,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
 ```
 
 This configuration file must be created in a the `.github/workflows/` directory.
@@ -145,7 +145,7 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -227,12 +227,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
         with:
           source_files: README.md CHANGELOG.md notes/Notes.md
           task_name: Markdown
@@ -262,19 +262,19 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
         with:
           source_files: README.md CHANGELOG.md notes/Notes.md
           task_name: Markdown
           output_file: spellcheck-output.txt
 
       - name: Archive spellcheck output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: '!cancelled()' # Do not upload artifact if job was cancelled
         with:
           name: Spellcheck Output
@@ -371,12 +371,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
         with:
           config_path: config/.spellcheck.yml # put path to configuration file here
           source_files: source/scanning.md source/triggers.md
@@ -507,7 +507,7 @@ The action can be specified to use `hunspell` instead of `aspell` by setting the
 
 ```yaml
     - name: Spellcheck
-      uses: step-security/spellcheck-github-actions@0.66.0
+      uses: step-security/spellcheck-github-actions@v0
       with:
         task_name: Markdown
         spell_checker: hunspell
@@ -617,12 +617,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
         with:
           config_path: .github/spellcheck.yml
           skip_dict_compile: true # <--- set to true to skip custom dictionary compilation
@@ -657,12 +657,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
         with:
           config_path: .github/spellcheck.yml # <--- put path to configuration file here
 ```
@@ -806,13 +806,13 @@ And you should be good to go.
 
 ### Check only the changed files
 
-The marvellous GitHub Action: [tj-actions/changed-files](https://github.com/tj-actions/changed-files) can be used to check only the files changed in a pull request.
+The marvellous GitHub Action: [step-security/changed-files](https://github.com/step-security/changed-files) can be used to check only the files changed in a pull request.
 
 Your workflow could look something like this:
 
 ```yaml
     - name: Get all changed markdown files
-      uses: tj-actions/changed-files@v45
+      uses: step-security/changed-files@v47
       id: changed_files
       with:
         files: |
@@ -888,7 +888,7 @@ Indicates: `spellcheck.yaml` so this file should exist in the repository.
 
 If the file is available in the repository, please check that your workflow is configured correctly, with the following line, which enables [the action: checkout][actioncheckout].
 
-`uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3`
+`uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1`
 
 In full context:
 
@@ -906,12 +906,12 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Spellcheck
-        uses: step-security/spellcheck-github-actions@0.66.0
+        uses: step-security/spellcheck-github-actions@v0
 ```
 
 This step adds an action, which checkout out the repository for inspection by linters and other actions like this one.

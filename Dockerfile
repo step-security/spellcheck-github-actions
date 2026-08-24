@@ -19,7 +19,7 @@ COPY pwc.py /pwc.py
 
 # REF: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#apt-get
 RUN apt-get update && apt-get install -y \
-    build-essential pkg-config \
+    build-essential pkg-config jq \
     libxml2-dev libxslt1-dev \
     zlib1g-dev \
     aspell hunspell \

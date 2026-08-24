@@ -1,6 +1,6 @@
 name: "GitHub Spellcheck Action"
 description: 'A Github Action that spell checks Python, Markdown, and Text files using PySpelling'
-author: rojopolis
+author: 'step-security'
 inputs:
   config_path:
     description: 'Alternate configuration file to use'
