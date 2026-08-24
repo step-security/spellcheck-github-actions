@@ -1,0 +1,36 @@
+name: "GitHub Spellcheck Action"
+description: 'A Github Action that spell checks Python, Markdown, and Text files using PySpelling'
+author: rojopolis
+inputs:
+  config_path:
+    description: 'Alternate configuration file to use'
+    required: false
+  source_files:
+    description: |
+      A list of source files or patterns to scan.
+      This overrides your config file's `source` section.
+      `task_name` must also be specified to use this option.
+    required: false
+  task_name:
+    description: Name of the PySpelling task to run
+    required: false
+  output_file:
+    description: |
+      Name of a generated output file containing output from pyspelling.
+    required: false
+  spell_checker:
+    description: |
+      The spell checker to use. Either `hunspell` or `aspell`.
+    required: false
+  skip_dict_compile:
+    description: |
+      Skip dictionary compiling step if the dictionary already exists.
+      Changes to a custom dictionary will be ignored.
+      Accepts "true" or "false" and defaults to "false".
+    required: false
+branding:
+  color: green
+  icon: type
+runs:
+  using: docker
+  image: 'docker://jonasbn/github-action-spellcheck:0.66.0'
