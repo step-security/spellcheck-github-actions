@@ -1,0 +1,178 @@
+# Trivy ignore file — CVEs reviewed and confirmed not reachable at runtime
+# This action runs: pyspelling, aspell/hunspell, curl (outbound HTTPS only), python3
+# REF: https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/
+
+# apt / libapt-pkg7.0 — not called at runtime
+CVE-2011-3374
+
+# bash — not exploitable; action runs trusted script as root in isolated container
+TEMP-0841856-B18BAF
+
+# bash-completion — not invoked by this action
+CVE-2018-7738
+
+# coreutils — none of the affected binaries (chown, sort, uniq, unexpand) are called
+CVE-2017-18018
+CVE-2025-5278
+CVE-2026-56391
+CVE-2026-56392
+
+# curl / libcurl4t64 — used only for one outbound HTTPS POST to a known endpoint
+# SSH/SFTP CVEs: action never uses SSH; proxy/cookie/.netrc CVEs: none configured
+CVE-2025-10966
+CVE-2025-14017
+CVE-2025-15079
+CVE-2025-15224
+CVE-2026-8286
+CVE-2026-8458
+CVE-2026-8924
+CVE-2026-8926
+CVE-2026-8927
+CVE-2026-8932
+CVE-2026-9079
+CVE-2026-9080
+CVE-2026-9545
+CVE-2026-9547
+CVE-2026-10536
+CVE-2026-11856
+CVE-2026-12064
+
+# diffutils — not called by this action
+CVE-2026-53910
+
+# gzip — action processes markdown/text files, not compressed archives
+CVE-2026-41991
+CVE-2026-41992
+
+# jq / libjq1 — CVE-2025-9403 is in run_jq_tests() test code, not the main binary
+CVE-2025-9403
+
+# krb5 family — Kerberos not configured; action makes plain HTTPS calls
+CVE-2018-5709
+CVE-2024-26458
+CVE-2024-26461
+CVE-2026-11850
+
+# libacl1 / libattr1 — ACL/xattr functions not called by this action
+CVE-2026-54369
+CVE-2026-54370
+CVE-2026-54371
+
+# libbz2 — bzip2 not called; action processes text/markdown, not bzip2 archives
+CVE-2026-42250
+
+# glibc (libc-bin / libc6) — attack vectors not triggered: no TSIG DNS, no scanf %mc,
+# no wordexp, no tilde expansion from untrusted input; ASLR/stack-guard bypasses theoretical
+CVE-2010-4756
+CVE-2018-20796
+CVE-2019-1010022
+CVE-2019-1010023
+CVE-2019-1010024
+CVE-2019-1010025
+CVE-2019-9192
+CVE-2026-5435
+CVE-2026-5450
+CVE-2026-5928
+CVE-2026-6238
+CVE-2026-6368
+CVE-2026-6791
+CVE-2026-19542
+
+# libgnutls30 — CVE-2011-3389 BEAST attack mitigated in modern TLS stacks
+CVE-2011-3389
+
+# openldap (libldap) — LDAP not used; libldap is a curl dep but LDAP protocol unused
+CVE-2015-3276
+CVE-2017-14159
+CVE-2017-17740
+CVE-2020-15719
+CVE-2026-22185
+
+# libnghttp2 — HTTP smuggling requires attacker-controlled proxy/response; not applicable
+CVE-2026-58055
+
+# libp11-kit0 — PKCS#11/smart card not used
+CVE-2026-13757
+CVE-2026-18938
+
+# libpam — PAM not used by this action
+CVE-2026-54411
+
+# libsqlite3 — Python uses SQLite internally; action processes no untrusted SQLite databases
+CVE-2021-45346
+CVE-2025-70873
+CVE-2026-11822
+CVE-2026-11824
+CVE-2026-50812
+CVE-2026-50813
+
+# libssh2 — SSH not used; action makes HTTPS-only calls
+CVE-2026-58050
+CVE-2026-58051
+CVE-2026-66032
+CVE-2026-66033
+CVE-2026-66034
+CVE-2026-66035
+
+# systemd (libsystemd0 / libudev1) — systemd not running in container; not invoked at runtime
+CVE-2013-4392
+CVE-2023-31437
+CVE-2023-31438
+CVE-2023-31439
+CVE-2026-15059
+CVE-2026-16742
+CVE-2026-40228
+
+# perl-base — base OS package, never called at runtime by this action
+CVE-2011-4116
+CVE-2025-15649
+CVE-2026-7010
+CVE-2026-7017
+CVE-2026-8376
+CVE-2026-9538
+CVE-2026-12087
+CVE-2026-13221
+CVE-2026-15534
+CVE-2026-19487
+CVE-2026-42496
+CVE-2026-42497
+CVE-2026-48959
+CVE-2026-48961
+CVE-2026-48962
+CVE-2026-57432
+CVE-2026-57433
+
+# ncurses — aspell/hunspell link against it but run non-interactively
+CVE-2025-6141
+CVE-2025-69720
+
+# openssl — QUIC server DoS; action is a client making outbound HTTPS calls only
+CVE-2026-14456
+CVE-2026-75803
+
+# util-linux family (bsdutils, libblkid1, libmount1, libuuid1, mount, etc.) — not called at runtime
+CVE-2022-0563
+CVE-2026-3184
+
+# login.defs / passwd / shadow-utils — user management tools not used by this action
+CVE-2007-5686
+CVE-2024-56433
+TEMP-0628843-DBAD28
+
+# sysvinit-utils — init system utilities not used by this action
+TEMP-0517018-A83CE6
+
+# tar — not called by this action
+CVE-2005-2541
+CVE-2026-5704
+CVE-2026-18477
+CVE-2026-18508
+TEMP-0290435-0B57B5
+
+# zlib1g — DoS via CRC32; input is repo content from trusted workflow authors
+CVE-2026-27171
+
+# Python — upgraded in Dockerfile; fallback entries if build cache skips the upgrade layer
+GHSA-6v7p-g79w-8964
+CVE-2025-47273
+CVE-2026-59890
