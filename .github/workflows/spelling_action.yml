@@ -1,0 +1,32 @@
+name: Spellcheck Action
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**/*.md'
+      - 'spellcheck.yaml'
+      - 'wordlist.txt'
+      - '.github/workflows/spelling_action.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Spellcheck
+        uses: ./
+        with:
+          source_files: README.md CHANGELOG.md
+          task_name: Markdown
+          output_file: spellcheck-output.txt
+

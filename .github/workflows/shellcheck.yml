@@ -1,0 +1,24 @@
+name: Shellcheck Action
+
+on:
+  push:
+    paths:
+      - '**/*.sh'
+      - '.shellcheckrc'
+      - '.github/workflows/shellcheck.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Shellcheck
+        uses: step-security/action-shellcheck@v2

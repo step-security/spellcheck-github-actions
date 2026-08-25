@@ -1,0 +1,29 @@
+
+name: Markdownlint Action
+
+on:
+  push:
+    paths:
+      - '**/*.md'
+      - '.markdownlint.json'
+      - '.markdownlintignore'
+      - '.github/workflows/markdownlint.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Markdownlint
+        uses: nosborn/github-action-markdown-cli@v3
+        with:
+          files: .
+          config_file: ".markdownlint.json"

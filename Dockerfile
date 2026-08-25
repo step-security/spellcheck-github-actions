@@ -1,0 +1,41 @@
+# REF: https://hub.docker.com/_/python
+# Python 3.14.7-slim-trixie
+FROM python:3.14.7-slim-trixie@sha256:ce40764625a4ff50df3548277632e7f96c4e77fe75fa848aae9885476e7df5a4
+
+LABEL "com.github.actions.name"="Spellcheck Action"
+LABEL "com.github.actions.description"="Check spelling of files in repository"
+LABEL "com.github.actions.icon"="clipboard"
+LABEL "com.github.actions.color"="green"
+LABEL "repository"="http://github.com/step-security/spellcheck-github-actions"
+LABEL "homepage"="https://github.com/marketplace/actions/github-spellcheck-action"
+LABEL "maintainer"="step-security"
+LABEL "maintainer"="step-security <security@stepsecurity.io>"
+
+COPY entrypoint.sh /entrypoint.sh
+COPY requirements.txt /requirements.txt
+COPY constraint.txt /constraint.txt
+COPY spellcheck.yaml /spellcheck.yaml
+COPY pwc.py /pwc.py
+
+# REF: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#apt-get
+RUN apt-get update && apt-get install -y \
+    build-essential pkg-config curl jq \
+    libxml2-dev libxslt1-dev \
+    zlib1g-dev \
+    aspell hunspell \
+    aspell-en hunspell-en-au hunspell-en-ca hunspell-en-gb hunspell-en-us \
+    aspell-de hunspell-de-at hunspell-de-ch hunspell-de-de \
+    aspell-es hunspell-es \
+    aspell-fr hunspell-fr \
+    aspell-ru hunspell-ru \
+    aspell-uk hunspell-uk \
+    aspell-it hunspell-it \
+    aspell-pt-pt aspell-pt-br hunspell-pt-pt hunspell-pt-br \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PIP_CONSTRAINT=/constraint.txt
+RUN pip3 install -r /requirements.txt
+
+WORKDIR /tmp
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
