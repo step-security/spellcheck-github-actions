@@ -32,5 +32,6 @@ branding:
   color: green
   icon: type
 runs:
-  using: docker
-  image: Dockerfile
+  using: 'docker'
+  image: 'docker://ghcr.io/step-security/spellcheck-github-actions:v0.66.0@sha256:94cd92e308e2aeeebb08a87a11204ba591e72ee6574dbe120eab173ca89d957f' # v0.66.0
+
