@@ -33,5 +33,5 @@ branding:
   icon: type
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/step-security/spellcheck-github-actions:v0.66.0@sha256:94cd92e308e2aeeebb08a87a11204ba591e72ee6574dbe120eab173ca89d957f' # v0.66.0
+  image: 'docker://ghcr.io/step-security/spellcheck-github-actions:v0.69.0@sha256:b685186c027908602060f91c191a1494d9d932101500cc1d35b7827fb497b9c0' # v0.69.0
 
